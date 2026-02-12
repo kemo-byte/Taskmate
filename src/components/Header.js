@@ -2,11 +2,12 @@ import { useEffect, useState } from "react"
 import Logo from "../assets/logo.png"
 
 export const Header = () => {
-  const [theme,setTheme] = useState("light");
+  const [theme,setTheme] = useState(localStorage.getItem('theme') || "light");
 
   useEffect(()=>{
     document.documentElement.removeAttribute('class');
     document.documentElement.classList.add(theme);
+    localStorage.setItem('theme',theme);
   },[theme]);
   return (
     <header>
